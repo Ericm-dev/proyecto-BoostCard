@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoostCard | Kit Digital para Emprendedores</title>
+
+    <!-- 
+        Bootstrap 5: Framework CSS para maquetación y componentes rápidos.
+        Se usa para el grid, cards, navbar, botones, acordeón, etc.
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 
+        AOS (Animate On Scroll): Librería para animaciones al hacer scroll.
+        Se activa con atributos como data-aos="fade-up"
+    -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Fuente principal del sitio -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* 
+            ======================
+            ESTILOS GENERALES
+            ======================
+        */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f7faff;
+            color: #1c1f23;
+            transition: background .3s, color .3s;
+        }
+
+        /* 
+            ======================
+            DARK MODE (modo oscuro)
+            Se activa agregando la clase .dark-mode al body
+            ======================
+        */
+        body.dark-mode {
+            background: #081122 !important;
+            color: #d7e6ff !important;
+        }
+
+        /* Fondo del hero en modo oscuro */
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #0031b8, #0088ff);
+            box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.06);
+        }
+
+        /* Cards en modo oscuro */
+        body.dark-mode .card-feature {
+            background: #0d1a33;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #cfe2ff;
+        }
+
+        /* Botón principal en modo oscuro */
+        body.dark-mode .btn-primary-modern {
+            background: #0059ff !important;
+            color: #fff !important;
+        }
+
+        /* Botón outline en modo oscuro */
+        body.dark-mode .btn-outline-modern {
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+
+
+        /* ======================
+           NAVBAR
+        ====================== */
+        .navbar {
+            padding: 1.2rem 2rem;
+            background: transparent;
+        }
+
+        /* Logo cuadrado degradado */
+        .logo-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0059ff, #00d4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #fff;
+            font-size: 18px;
+        }
+
+
+        /* ======================
+           HERO (sección principal)
+        ====================== */
+        .hero {
+            padding: 100px 20px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #0059ff, #00d4ff);
+            color: #fff;
+        }
+
+        /* .hero-2 {
+            padding: 100px 20px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #0059ff, #00d4ff);
+            color: #fff;
+        } */
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 20px auto;
+            font-size: 1.2rem;
+            color: #eef7ff;
+        }
+
+
+        /* 
+            ======================
+            BOTONES PERSONALIZADOS
+            ======================
+        */
+        .btn-primary-modern {
+            background: #ffffff;
+            color: #0059ff;
+            font-weight: 700;
+            padding: 14px 26px;
+            border-radius: 10px;
+            border: none;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary-modern:hover {
+            background: #e7efff;
+        }
+
+        .btn-outline-modern {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-outline-modern:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+
+        /* ======================
+           CARDS DE LAS SECCIONES
+        ====================== */
+        .card-feature {
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+            background: #fff;
+            transition: transform .3s;
+        }
+
+        /* Efecto hover suave */
+        .card-feature:hover {
+            transform: translateY(-4px);
+        }
+
+        section h2 {
+            font-weight: 800;
+        }
+
+
+        /* ======================
+           FOOTER
+        ====================== */
+        footer {
+            padding: 40px;
+            text-align: center;
+            color: #7c8aa5;
+        }
+
+        body.dark-mode footer {
+            color: #9db8e6;
+        }
+
+
+        /* Botón del modo oscuro */
+        #switchMode {
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: inherit;
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        ============================
+        NAVBAR SUPERIOR
+        Incluye el logo + nombre + botón dark mode
+        ============================
+    -->
+    <nav class="navbar d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+            <div class="logo-box">NS</div>
+            <h5 class="m-0 fw-bold">NeoStarter Labs</h5>
+        </div>
+
+        <!-- Botón para activar el modo oscuro -->
+        <button id="switchMode" title="Cambiar tema">🌓</button>
+    </nav>
+
+
+    <!-- 
+        ============================
+        HERO (encabezado principal)
+        ============================
+    -->
+    <header class="hero">
+        <h1 data-aos="fade-up">BoostCard <br>
+            Tu Inicio Inteligente en el Mundo Emprendedor</h1>
+
+        <p data-aos="fade-up" data-aos-delay="150">
+            Plantillas profesionales, herramientas claras y un enfoque práctico.
+            Todo en un solo kit para ayudarte a planificar, validar y lanzar tu negocio con rapidez.
+        </p>
+
+        <!-- Botones principales -->
+        <div class="d-flex gap-3 justify-content-center mt-4">
+            <a href="https://drive.google.com/uc?export=download&id=1lD0yFEqrefPYd3nhJF6qzFhAln8UWKE-" class="btn-primary-modern">Descargar Kit</a>
+            <!-- <a href="#contenido" class="btn-outline-modern">Ver contenido</a> -->
+        </div>
+    </header>
+
+
+    <!-- 
+        ===================================
+        SECCIÓN ¿CÓMO FUNCIONA BOOSTCARD?
+        ===================================
+    -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4" data-aos="fade-up">¿Cómo funciona BoostCard?</h2>
+
+        <!-- 3 pasos explicativos -->
+        <div class="row g-4 mt-3">
+
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="card-feature">
+                    <h5 class="fw-bold">1. Descarga el kit</h5>
+                    <p class="text-muted">Obtén el archivo ZIP con todas las plantillas listas para usar.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-feature">
+                    <h5 class="fw-bold">2. Edita y adapta</h5>
+                    <p class="text-muted">Modifica cada plantilla con tu información real de negocio.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-feature">
+                    <h5 class="fw-bold">3. Aplica y lánzate</h5>
+                    <p class="text-muted">Sigue la guía y transforma tu idea en un proyecto concreto.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 
+        ==============================
+        SECCIÓN CONTENIDO DEL KIT
+        ==============================
+    -->
+    <section class="container py-5" id="contenido">
+        <h2 class="text-center mb-4" data-aos="fade-up">Contenido del Kit</h2>
+
+        <div class="row g-4 mt-3">
+
+            <!-- Reutilización del diseño de cards -->
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="card-feature">
+                    <h5 class="fw-bold">📌 Modelo CANVAS</h5>
+                    <p class="text-muted">Toda tu idea explicada en una sola hoja.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-feature">
+                    <h5 class="fw-bold">🎯 Propuesta de Valor</h5>
+                    <p class="text-muted">Diferencia tu negocio desde el inicio.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-feature">
+                    <h5 class="fw-bold">👤 Buyer Persona</h5>
+                    <p class="text-muted">Define claramente tu cliente ideal.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="card-feature">
+                    <h5 class="fw-bold">🧪 Validación Rápida</h5>
+                    <p class="text-muted">Comprueba si tu idea funciona antes de invertir.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-feature">
+                    <h5 class="fw-bold">📅 Planificador Semanal</h5>
+                    <p class="text-muted">Organiza las tareas clave del proyecto.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-feature">
+                    <h5 class="fw-bold">📘 Mini Guía</h5>
+                    <p class="text-muted">Un paso a paso práctico para comenzar.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 
+        ==============================
+        VENTAJAS COMPETITIVAS
+        ==============================
+    -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4" data-aos="fade-up">¿Por qué BoostCard es diferente?</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-6" data-aos="fade-up">
+                <div class="card-feature">
+                    <h5 class="fw-bold">✔ Enfoque práctico</h5>
+                    <p class="text-muted">No teoría, sino acciones directas para avanzar hoy mismo.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-feature">
+                    <h5 class="fw-bold">✔ Diseño moderno y claro</h5>
+                    <p class="text-muted">Material visual, limpio y profesional para presentar tu idea.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up">
+                <div class="card-feature">
+                    <h5 class="fw-bold">✔ Fácil de llenar</h5>
+                    <p class="text-muted">Plantillas guiadas con ejemplos simplificados.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-feature">
+                    <h5 class="fw-bold">✔ Ideal para emprendedores nuevos</h5>
+                    <p class="text-muted">Incluso si no sabes nada de negocios: lo entenderás todo.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 
+        ======================
+        TESTIMONIOS
+        ======================
+    -->
+    <section class="container py-5" id="testimonios">
+        <h2 class="text-center mb-4" data-aos="fade-up">Testimonios</h2>
+
+        <div class="row g-4 mt-3">
+
+            <div class="col-md-4" data-aos="zoom-in">
+                <div class="card-feature">
+                    <strong>"Finalmente pude organizar mi idea en un día. Las plantillas son claras y fáciles."</strong>
+                    <p class="small text-muted mt-2">— Andrea, Panama Startup Week</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-feature">
+                    <strong>"Nos ayudó a presentar nuestro proyecto a inversionistas sin dificultad."</strong>
+                    <p class="small text-muted mt-2">— Team NovaLabs</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-feature">
+                    <strong>"La validación rápida me salvó de invertir en una mala idea."</strong>
+                    <p class="small text-muted mt-2">— Ricardo, emprendedor digital</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 
+        ======================
+        PREGUNTAS FRECUENTES
+        ======================
+    -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4" data-aos="fade-up">Preguntas Frecuentes</h2>
+
+        <!-- Acordeón Bootstrap -->
+        <div class="accordion" id="faq" data-aos="fade-up">
+
+            <!-- Pregunta 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="q1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+                        ¿Necesito experiencia previa?
+                    </button>
+                </h2>
+                <div id="a1" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        No. BoostCard está diseñado para principiantes sin conocimientos empresariales.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="q2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#a2">
+                        ¿En qué formatos vienen las plantillas?
+                    </button>
+                </h2>
+                <div id="a2" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        En PDF editable, Word, imágenes y hojas de trabajo.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pregunta 3 (cortada en origen, puedes completarla) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="q3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#a3">
+                        <!-- Completa aquí -->
+                    </button>
+                </h2>
+                <div id="a3" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <!-- Respuesta -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- <div class="hero">
+        <div class="d-flex gap-3 justify-content-center mt-4">
+            <a href="#" class="btn-primary-modern">Descargar Kit (ZIP)</a>
+        </div>
+    </div> -->
+
+    <div class="hero">
+        <h1 data-aos="fade-up">BoostCard tú mejor desición<br>
+            Tu Inicio Inteligente en el Mundo Emprendedor</h1>
+        <div class="d-flex gap-3 justify-content-center mt-4">
+            <a href="#" class="btn-primary-modern">Descargar Kit</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        BoostCard © 2025 · Construido por NeoStarter Labs
+    </footer>
+
+
+    <!-- ======================
+         SCRIPTS
+    ======================= -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animations -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        // Inicializar animaciones AOS
+        AOS.init();
+
+        /*
+            ==================================
+            MODO OSCURO
+            Alterna la clase .dark-mode en body
+            ==================================
+        */
+        const switchMode = document.getElementById("switchMode");
+
+        switchMode.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+    </script>
+
+</body>
+
+</html>
