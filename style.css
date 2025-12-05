@@ -1,0 +1,263 @@
+/* 
+    ======================
+    ESTILOS GENERALES
+    ======================
+*/
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f7faff;
+    color: #1c1f23;
+    transition: background .3s, color .3s;
+}
+
+/* 
+    ======================
+    DARK MODE (modo oscuro)
+    Se activa agregando la clase .dark-mode al body
+    ======================
+*/
+body.dark-mode {
+    background: #081122 !important;
+    color: #d7e6ff !important;
+}
+
+/* Fondo del hero en modo oscuro */
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #0031b8, #0088ff);
+    box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.06);
+}
+
+/* Cards en modo oscuro */
+body.dark-mode .card-feature {
+    background: #0d1a33;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #cfe2ff;
+}
+
+/* Botón principal en modo oscuro */
+body.dark-mode .btn-primary-modern {
+    background: #0059ff !important;
+    color: #fff !important;
+}
+
+/* Botón outline en modo oscuro */
+body.dark-mode .btn-outline-modern {
+    color: #fff !important;
+    border-color: #fff !important;
+}
+
+
+/* ======================
+    NAVBAR
+====================== */
+.navbar {
+    padding: 1.2rem 2rem;
+    background: transparent;
+}
+
+/* Logo cuadrado degradado */
+.logo-box {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #fff;
+    font-size: 18px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.modo {
+    height: 45px;
+}
+
+/* ======================
+    HERO (sección principal)
+====================== */
+.hero {
+    padding: 100px 20px 60px;
+    text-align: center;
+    background: linear-gradient(135deg, #0059ff, #00d4ff);
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: 20px auto;
+    font-size: 1.2rem;
+    color: #eef7ff;
+}
+
+/* 
+    ======================
+    BOTONES PERSONALIZADOS
+    ======================
+*/
+.btn-primary-modern {
+    background: #ffffff;
+    color: #0059ff;
+    font-weight: 700;
+    padding: 14px 26px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn-primary-modern:hover {
+    background: #e7efff;
+}
+
+.btn-outline-modern {
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-outline-modern:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ======================
+    CARDS DE LAS SECCIONES
+====================== */
+.card-feature {
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+    background: #fff;
+    transition: transform .3s;
+}
+
+/* Efecto hover suave */
+.card-feature:hover {
+    transform: translateY(-4px);
+}
+
+section h2 {
+    font-weight: 800;
+}
+
+
+/* ======================
+    FOOTER
+====================== */
+footer {
+    padding: 40px;
+    text-align: center;
+    color: #7c8aa5;
+}
+
+body.dark-mode footer {
+    color: #9db8e6;
+}
+
+/* Botón del modo oscuro */
+#switchMode {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 1.3rem;
+}
+
+.texto-nombre-empresa {
+
+    font-size: 32px;
+
+    /* 1. Asegura que el elemento solo tome el ancho del texto */
+    display: inline-block;
+
+    /* Opcional: Elimina la línea de subrayado normal si el texto es un enlace */
+    text-decoration: none;
+
+    /* 2. Establece un borde transparente para definir el grosor de la línea */
+    /* '3px' es el grosor y 'solid transparent' es el estilo y color base */
+    border-bottom: 3px solid transparent;
+
+    /* 3. Aplica el gradiente como la imagen de la línea */
+    border-image-source: linear-gradient(135deg, #0059ff, #00d4ff);
+
+    /* 4. 'slice: 1' asegura que el gradiente cubra todo el borde */
+    border-image-slice: 1;
+
+    /* Opcional: Pequeño relleno para separar la línea del texto */
+    padding-bottom: 2px;
+}
+
+/* 1. Icono para Modelo Canvas */
+.color-canvas {
+    color: #E91E63; /* Rosa fuerte */
+}
+
+/* 2. Icono para Propuesta de Valor */
+.color-propuesta {
+    color: #FF9800; /* Naranja intenso */
+}
+
+/* 3. Icono para Buyer Persona */
+.color-persona {
+    color: #4CAF50; /* Verde vibrante */
+}
+
+/* 4. Icono para Validación Rápida */
+.color-validacion {
+    color: #03A9F4; /* Azul brillante */
+}
+
+/* 5. Icono para Planificador Semanal */
+.color-planificador {
+    color: #9C27B0; /* Púrpura */
+}
+
+/* 6. Icono para Mini Guía */
+.color-guia {
+    color: #795548; /* Marrón */
+}
+
+/* Opcional: Estilo general para todos los iconos para separarlos del texto */
+.fa-solid {
+    margin-right: 8px; /* Pequeña separación a la derecha */
+}
+
+/* Nuevas clases para los puntos de beneficio */
+
+/* 1. Icono para Enfoque práctico */
+.color-practico {
+    color: #FF5722; /* Rojo/Naranja para la acción */
+}
+
+/* 2. Icono para Diseño moderno */
+.color-diseno {
+    color: #673AB7; /* Morado para diseño y profesionalismo */
+}
+
+/* 3. Icono para Fácil de llenar */
+.color-facil {
+    color: #8BC34A; /* Verde claro para la facilidad */
+}
+
+/* 4. Icono para Ideal para emprendedores */
+.color-emprendedor {
+    color: #2196F3; /* Azul para el conocimiento */
+}
+
+/* Si usaste los checks originales (✔), usa este CSS para darles color: */
+.check-unicode {
+    color: #4CAF50; /* Puedes usar un color si los envuelves en un <span> */
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
